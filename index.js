@@ -4,7 +4,12 @@ const { Server } = require("socket.io");
 
 const PORT = process.env.PORT || 8000;
 
-const server = http.createServer();
+// Basic HTTP server to respond with 200 OK
+const server = http.createServer((req, res) => {
+  res.writeHead(200, { "Content-Type": "text/plain" });
+  res.end("Socket.IO Server Running");
+});
+
 const io = new Server(server, {
   cors: {
     origin: ["https://chatappbyha.netlify.app"],
