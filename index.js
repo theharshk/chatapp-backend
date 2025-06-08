@@ -1,8 +1,8 @@
 // Node server which whill handle socket io connections and serve the frontend files
 const PORT = process.env.PORT || 8000;
+const { Server } = require("socket.io");
 
-const { Server } = require("socket.io");  // use latest syntax
-
+// Create the Socket.IO server with CORS settings
 const io = new Server({
     cors: {
         origin: ["https://chatappbyha.netlify.app"],
@@ -10,7 +10,9 @@ const io = new Server({
     }
 });
 
-
+// Start listening on the assigned port
+io.listen(PORT);
+console.log(`Socket.IO server listening on port ${PORT}`);
 const user = {};
 
 io.on('connection', socket => {
