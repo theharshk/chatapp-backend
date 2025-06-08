@@ -1,12 +1,13 @@
 // Node server which whill handle socket io connections and serve the frontend files
+const PORT = process.env.PORT || 8000;
+
 const io = require('socket.io')(PORT, {
     cors: {
         origin: ["https://chatappbyha.netlify.app"],
         methods: ["GET", "POST"]
     }
-    
-  });
-  
+});
+
 
 const user = {};
 
