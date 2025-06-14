@@ -61,10 +61,10 @@ io.on('connection', socket => {
   socket.on('file-message', fileData => {
     try {
       // ✅ Reject large base64 strings (> ~2.5 MB) to prevent disconnects
-      if (fileData?.base64?.length > 3_500_000) {
-        console.warn(`⚠️ File too large from ${users[socket.id] || socket.id}`);
-        return;
-      }
+      // if (fileData?.base64?.length > 3_500_000) {
+      //   console.warn(`⚠️ File too large from ${users[socket.id] || socket.id}`);
+      //   return;
+      // }
       socket.broadcast.emit('file-receive', fileData);
     } catch (err) {
       console.error("❌ Error handling file-message:", err);
