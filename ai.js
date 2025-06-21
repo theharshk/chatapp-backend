@@ -10,7 +10,7 @@ const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
 
 async function handleAIMessage(prompt) {
     try {
-        const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" }); // moved inside to ensure fresh scope
+        const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-preview-image-generation" }); // moved inside to ensure fresh scope
         const result = await model.generateContent(prompt);
         const response = result.response; // ❌ no await here
         const text = response.text();
